@@ -13,9 +13,9 @@ This is limited to bit string sizes here, but could be extended relatively
 easily to other constraints. This is clunkier than it would be in a language
 with real dependent types (which I am effectively faking here using DataKinds,
 GADTs, and TypeFamilies), and indeed I originally completed the assignment using
-Idris, but those languages often lack libraries for"real-world" functionality
+Idris, but those languages often lack libraries for "real-world" functionality
 (e.g. networking, I/O in general, etc.). However, I hope this implementation can
-serve as both a submission for this assigment and a showcase of some basic and
+serve as both a submission for this assignment and a showcase of some basic and
 practical type-level verification techniques (formal verification and type
 systems are my area of research).
 
@@ -51,6 +51,6 @@ probably uses hundreds to thousands. If an efficient implementation using these
 formal method was desired, there are two approaches that come to mind:
 - deep embedding of a syntax for the operations, and then compilation
 - linear types
-Unfortunately, both of these approaches are unwarrantedly complex an assigment.
-As such, I resign myself to a slow XOR implementation using 16 pattern matches
-instead of a single-instruction XOR on machine words.
+Unfortunately, both of these approaches are unwarrantedly complex for an
+assigment. As such, I resign myself to a slow XOR implementation using 16 pattern
+matches instead of a single-instruction XOR on machine words.
