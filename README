@@ -2,7 +2,7 @@ Name: Samuel Breese
 Description: Cryptography and Network Security - Toy DES implementation
 Language: Haskell
 Dependencies:
-- Recent release of GHC
+- Recent release of GHC (tested on version 8.4.3)
 - bytestring library (https://hackage.haskell.org/package/bytestring)
 
 I wrote my implementation in Haskell. Perhaps more interesting is my use of
@@ -29,3 +29,28 @@ This will create a binary file called "crypto1", which can be given a command
 (either "encrypt" or "decrypt") and a key (as a ten-bit binary number) as command
 line arguments. It will then proceed to read from standard input and write to
 standard output until end-of-file.
+
+If you do not wish to use Stack, it should still be easy to compile and run. The
+only dependency from Hackage is the bytestring library, which is practically
+essential - I tried hard to avoid introducing any extraneous dependencies even
+if they would be useful, instead replicating the desired functionality
+internally (e.g., many functions from Control.Arrow).
+
+Networking is trivial by simply redirecting input and output streams to "netcat"
+from the shell. In the future, I might integrate networking natively, but as it
+stands it is more aesthetically pleasing to simply operate on streams and compose
+with other tools when additional functionality is required (per UNIX philosophy).
+Since this was explicitly stated to be acceptable on Piazza, I didn't worry about
+it too much.
+
+On another note: this implementation is not at all efficient, since bytes are
+treated as linked lists of booleans (using cons cells) that are destructed using
+pattern matching. The specified simple DES probably only needs 10-15
+instructions per byte on modern architectures, where this implementation
+probably uses hundreds to thousands. If an efficient implementation using these
+formal method was desired, there are two approaches that come to mind:
+- deep embedding of a syntax for the operations, and then compilation
+- linear types
+Unfortunately, both of these approaches are unwarrantedly complex an assigment.
+As such, I resign myself to a slow XOR implementation using 16 pattern matches
+instead of a single-instruction XOR on machine words.
