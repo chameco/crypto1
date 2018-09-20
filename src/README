@@ -1,0 +1,31 @@
+Name: Samuel Breese
+Description: Cryptography and Network Security - Toy DES implementation
+Language: Haskell
+Dependencies:
+- Recent release of GHC
+- bytestring library (https://hackage.haskell.org/package/bytestring)
+
+I wrote my implementation in Haskell. Perhaps more interesting is my use of
+relatively advanced type-level programming functionality in Haskell.
+Practically, this allows me to encode at least some correctness guarantees at
+the type level, ensuring that certain invariants are enforced at compile time.
+This is limited to bit string sizes here, but could be extended relatively
+easily to other constraints. This is clunkier than it would be in a language
+with real dependent types (which I am effectively faking here using DataKinds,
+GADTs, and TypeFamilies), and indeed I originally completed the assignment using
+Idris, but those languages often lack libraries for"real-world" functionality
+(e.g. networking, I/O in general, etc.). However, I hope this implementation can
+serve as both a submission for this assigment and a showcase of some basic and
+practical type-level verification techniques (formal verification and type
+systems are my area of research).
+
+To compile, it is probably easiest to use the
+Haskell Stack (https://docs.haskellstack.org/en/stable/README/). Once installed,
+it should be sufficient to simply enter this repository and run
+
+  stack build --copy-bins
+
+This will create a binary file called "crypto1", which can be given a command
+(either "encrypt" or "decrypt") and a key (as a ten-bit binary number) as command
+line arguments. It will then proceed to read from standard input and write to
+standard output until end-of-file.

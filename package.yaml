@@ -1,0 +1,18 @@
+name:                crypto1
+version:             0.1.0.0
+author:              "Samuel Breese"
+maintainer:          "breess@rpi.edu"
+copyright:           "2018 Samuel Breese"
+
+ghc-options:
+- -Wall
+- -Werror
+
+dependencies:
+- base >= 4.7 && < 5
+- bytestring
+
+executables:
+  crypto1:
+    main:                Main.hs
+    source-dirs:         src
