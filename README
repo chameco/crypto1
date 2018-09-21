@@ -23,7 +23,7 @@ To compile, it is probably easiest to use the
 Haskell Stack (https://docs.haskellstack.org/en/stable/README/). Once installed,
 it should be sufficient to simply enter this repository and run
 
-  stack build --copy-bins
+  stack build --copy-bins --local-bin-path=.
 
 This will create a binary file called "crypto1", which can be given a command
 (either "encrypt" or "decrypt") and a key (as a ten-bit binary number) as command
